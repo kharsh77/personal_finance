@@ -57,7 +57,3 @@ def login_user():
         return jsonify({"token": token})
     return make_response('could not verify',  401, {'Authentication': '"login required"'})
 
-
-@blueprint.route("/")
-
-

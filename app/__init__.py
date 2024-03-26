@@ -6,15 +6,12 @@ from app.database import db
 
 def create_app():
     app=Flask(__name__)
-    app.config.from_mapping(
-        SECRET_KEY="MY_SECRET_KEY"
-    )
-
     app.config.from_object(Configs)
 
     db.init_app(app)
     from app.models.user import User
-    migrate = Migrate(app, db) 
+    from app.models.transaction import Transaction
+    Migrate(app, db) 
 
     app.register_blueprint(main.blueprint)
     return app

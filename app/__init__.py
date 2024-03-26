@@ -14,7 +14,7 @@ def create_app():
 
     db.init_app(app)
     from app.models.user import User
-    migrate = Migrate(app, db)
-    
+    migrate = Migrate(app, db) 
+
     app.register_blueprint(main.blueprint)
     return app

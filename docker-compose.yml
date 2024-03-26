@@ -6,7 +6,7 @@ services:
     container_name: db
     restart: always
     ports:
-      - 5123:5431
+      - 5432:5432
     environment:
       POSTGRES_USER: psql_user
       POSTGRES_PASSWORD: password  

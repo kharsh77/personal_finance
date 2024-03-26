@@ -1,4 +1,5 @@
 from app.database import db
+from datetime import datetime
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -8,9 +9,9 @@ class User(db.Model):
     created_at = db.Column(db.Date, nullable=False)
     password = db.Column(db.String(), nullable=False)    
 
-    def __init__(self, username, created_at, password):
+    def __init__(self, username, password):
         self.username = username        
-        self.created_at = created_at  
+        self.created_at = datetime.now()  
         self.password = password      
     
     def register_user_if_not_exist(self):        

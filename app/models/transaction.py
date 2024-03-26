@@ -59,7 +59,8 @@ class Transaction(db.Model):
             time_from = datetime.strptime(f"01/{month}/{int(str(year)[-2:])} 00:00:00", "%d/%m/%y %H:%M:%S")
             time_to = datetime.strptime(f'29/2/24 23:59:59', '%d/%m/%y %H:%M:%S')
 
-        all_trans=Transaction.query.filter(Transaction.created_at>=time_from, Transaction.created_at<=time_to).all()
+        all_trans=Transaction.query.filter(user_id==user_id, Transaction.created_at>=time_from, Transaction.created_at<=time_to).all()
+        
         tot_income=0
         tot_expense=0
         net_balance=0
@@ -69,6 +70,7 @@ class Transaction(db.Model):
             else:
                 tot_income+=t.amount
         net_balance = tot_income-tot_expense
+        
         return {
             "total_income": tot_income,
             "total_expense": tot_expense,

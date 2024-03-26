@@ -8,9 +8,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: psql_user
-      POSTGRES_PASSWORD: password  
-      POSTGRES_DB: pfm_db 
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'  
+      POSTGRES_DB: 'postgres' 
     volumes:
       - ./pData:/var/lib/postgresql/data
     healthcheck:      
@@ -21,13 +21,13 @@ services:
       start_period: 10s   
     
   
-  pfm-app:
-    container_name: pfm-app
+  app:
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8008:5000    
+      - 8080:8080    
     depends_on:
       db:
         condition: service_healthy    

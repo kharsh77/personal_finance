@@ -1,0 +1,33 @@
+// Logs
+10195  kubectl logs pod/app-56fd4677fd-jnn9d
+
+// List all deployments and service
+10196  kubectl get po,svc
+10197  kubectl delete deployment --all
+10198  kubectl apply -f deployment.yml
+
+// convert all docker compose to deployments and service
+10200  brew install kompose
+10201  kompose --file ../docker-compose.yml convert
+
+// Apply all deployments and service in a folder
+10203  kubectl apply -f .
+
+// Get service URL
+10218* kubectl get node -o wide
+10220* minikube service service/web-service --url
+10221* minikube service list
+10222* minikube service web-service --url
+
+
+//Build an image
+10146  docker-compose build
+//Run in deamon mode
+10148  docker-compose up -d
+
+//Connecting minikube and local docker to exchange images
+eval $(minikube docker-env)
+
+
+kubectl describe pod
+kubectl delete svc <name>

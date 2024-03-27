@@ -1,7 +1,7 @@
 from app.database import db
 from datetime import datetime
 import enum
-from sqlalchemy import ForeignKeyConstraint
+from sqlalchemy import ForeignKeyConstraint, and_
 from app.models.user import User
 import calendar
 
@@ -57,10 +57,14 @@ class Transaction(db.Model):
                 month-=1
             last_date = calendar.monthrange(year, month)[-1]
             time_from = datetime.strptime(f"01/{month}/{int(str(year)[-2:])} 00:00:00", "%d/%m/%y %H:%M:%S")
-            time_to = datetime.strptime(f'29/2/24 23:59:59', '%d/%m/%y %H:%M:%S')
+            time_to = datetime.strptime(f'{last_date}/2/24 23:59:59', '%d/%m/%y %H:%M:%S')
+        all_trans=Transaction.query.filter(
+            and_(
+                Transaction.user_id==user_id,
+                Transaction.created_at>=time_from, 
+                Transaction.created_at<=time_to
+            )).all()
 
-        all_trans=Transaction.query.filter(user_id==user_id, Transaction.created_at>=time_from, Transaction.created_at<=time_to).all()
-        
         tot_income=0
         tot_expense=0
         net_balance=0

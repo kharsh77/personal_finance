@@ -52,9 +52,12 @@ def register():
 def login_user():
     try:
         auth=request.get_json()
+        print(auth)
         if not auth or "username" not in auth.keys() or "password" not in auth.keys():
             return make_response('username and password are mandatory', 400)    
         user=User.get_by_username(auth["username"])
+        if not user:
+            return make_response('Login failed due to incorrect password or username',  401)
         if check_password_hash(user.password, auth["password"]):
             token = jwt.encode({'id' : user.id, 'exp' : datetime.now() + timedelta(hours=12)}, current_app.config.get('JWT_SECRET'), "HS256")
             return jsonify({"token": token})

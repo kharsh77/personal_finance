@@ -27,7 +27,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8080:8080    
+      - "80:5000"
+    restart: always
+    image: app:1.0
     depends_on:
       db:
         condition: service_healthy    

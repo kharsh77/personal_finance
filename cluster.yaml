@@ -1,0 +1,29 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: finance-mamager-eks-cluster-vpc
+  region: ap-south-1
+
+vpc:
+  id: vpc-02e7e06714e767d10
+  cidr: "192.168.0.0/16"
+  subnets:
+    public:
+      ap-south-1a:
+        id: subnet-086a8cd5e9db69346
+      ap-south-1b:
+        id: subnet-0f79bd6dda76c3095
+    private:
+      ap-south-1a:
+        id: subnet-03bfb22aa02096255
+      ap-south-1b:
+        id: subnet-02a8974bf3cb78cf1
+
+nodeGroups:
+  - name: EKS-public-workers
+    instanceType: t2.micro
+    desiredCapacity: 1
+  - name: EKS-private-workers
+    instanceType: t2.micro
+    desiredCapacity: 1
+    privateNetworking: true

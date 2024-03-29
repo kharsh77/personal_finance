@@ -7,6 +7,7 @@ metadata:
   labels:
     io.kompose.service: app
   name: app
+  namespace: dev
 spec:
   replicas: 1
   selector:
@@ -22,7 +23,7 @@ spec:
         io.kompose.service: app
     spec:
       containers:
-        - image: 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0
+        - image: app:1.0
           name: app
           ports:
             - containerPort: 5000

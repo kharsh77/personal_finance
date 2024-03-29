@@ -13,7 +13,7 @@
 // Apply all deployments and service in a folder
 10203  kubectl apply -f .
 
-// Get service URL
+// Get service URL  
 10218* kubectl get node -o wide
 10220* minikube service service/web-service --url
 10221* minikube service list
@@ -50,3 +50,17 @@ aws eks --region ap-south-1 update-kubeconfig --name finance-mamager-eks-cluster
 
 update ECR image in deployment.ymal
 kubectl apply -f .
+
+
+https://stackoverflow.com/questions/73871493/error-while-installing-mongodb-in-aws-eks-cluster-running-prebind-plugin-volu
+https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-amazon-elastic-container-service
+
+
+# View/delete/Toggle different cluster contexts
+kubectl config get-contexts
+kubectl config use-context <context-name>
+kubectl config delete-context <context-name>
+
+
+# logs
+kubectl logs podname -n namespace

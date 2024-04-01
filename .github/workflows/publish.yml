@@ -1,9 +1,15 @@
 
-name: CI/CD. 
+name: publish_image_to_ecr
 on:
-  push:
-    branches:
-    - master
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      OPERATION:
+        description: 'Operation'
+        required: true
+        type: choice
+        options: ['publish']
+        default: 'publish'
 
 env:
   AWS_REGION: ap-south-1
@@ -11,6 +17,7 @@ env:
   ECR_REGISTRY: 654654146535.dkr.ecr.ap-south-1.amazonaws.com
   IMAGE_NAME: finance_mamager_ecr_eks_demo
   IMAGE_TAG: 1.0
+  OPERATION: ${{ github.event.inputs.OPERATION }}
 
 permissions:
       id-token: write   # This is required for requesting the JWT
@@ -18,6 +25,7 @@ permissions:
 
 jobs:
   create_app_image:
+    if: ${{ github.event.inputs.OPERATION  == 'publish' }}
     name: Publish personal finance app image to AWS ECR
     runs-on: ubuntu-latest
 
@@ -45,7 +53,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker-compose buid
+          docker-compose build
           docker tag app:1.0 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0
           docker push 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0
 

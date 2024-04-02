@@ -54,7 +54,7 @@
 - - Due to lack to production level EKS cluster this functionality is not fully functional.
 - Locally: (Minikube) 
 - - Namespace for the tenant has to be active for deploying app for a tenant.
-- - `kubectl apply -f kubernetes/<tenant-name>/. `
+- - `kubectl apply -f kubernetes/<tenant-name>/. -n <tenant-name> `
 - We will wait till all containers are RUNNING by using this command: `kubectl get po,svc -n <tenant-name>`
 - - `minikube service web-service --url` This command will output a specific URL which can be used via postman
 - - Each tenant will have a separate url which can be accessed by their users.

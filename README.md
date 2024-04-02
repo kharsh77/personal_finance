@@ -40,7 +40,7 @@
 - Remote: (ECR Registry)
 - - We can use github action rule: `publish_image_to_ecr` 
 - Locally
-- -  `docker-compose build`
+- -  `docker-compose build --no-cache`
 
 ## Add a new Tenant
 - We have deployment setup for each tenant in `kubernates/<tenant-name>` folder.
@@ -56,7 +56,7 @@
 - - Namespace for the tenant has to be active for deploying app for a tenant.
 - - `kubectl apply -f kubernates/<tenant-name>/. `
 - We will wait till all containers are RUNNING by using this command: `kubectl get po,svc -n <tenant-name>`
-- - `minikube service web-service --url` This command will output a specific URL which can be used via postman
+- - `minikube service app --url -n <tenant-name>` This command will output a specific URL which can be used via postman
 - - Each tenant will have a separate url which can be accessed by their users.
 
 

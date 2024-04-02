@@ -6,7 +6,7 @@ services:
     container_name: db
     restart: always
     ports:
-      - 5432:5432
+      - 5432:50001
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'  
@@ -27,9 +27,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:5000"
+      - "80:5001"
     restart: always
-    image: app:1.0
+    image: app:2.0
     depends_on:
       db:
         condition: service_healthy    

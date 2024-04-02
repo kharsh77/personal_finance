@@ -5,13 +5,13 @@ metadata:
     kompose.cmd: kompose --file ../docker-compose.yml convert
     kompose.version: 1.32.0 (HEAD)
   labels:
-    io.kompose.service: app
-  name: app
-  namespace: dev
+    io.kompose.service: db
+  name: db
+  namespace: tenant1
 spec:
   ports:
-    - name: "80"
-      port: 80
-      targetPort: 5000
+    - name: "5432"
+      port: 5432
+      targetPort: 50001
   selector:
-    io.kompose.service: app
+    io.kompose.service: db

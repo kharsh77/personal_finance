@@ -24,6 +24,7 @@
 10146  docker-compose build
 //Run in deamon mode
 10148  docker-compose up -d
+docker-compose build --no-cache
 
 //Connecting minikube and local docker to exchange images
 eval $(minikube docker-env)
@@ -36,9 +37,9 @@ kubectl delete svc <name>
 
 
 
-aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo
 docker tag app:1.0 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0
-docker push 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0
+docker push 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo:1.0aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654146535.dkr.ecr.ap-south-1.amazonaws.com/finance_mamager_ecr_eks_demo
+
 
 
 #create cloudformation stack on aws 
@@ -63,4 +64,8 @@ kubectl config delete-context <context-name>
 
 
 # logs
-kubectl logs podname -n namespace
+kubectl logs podnpod/app-7f8df45bf8-b4qd9ame -n namespace
+ 9734  minikube logs -f
+ 9735  minikube logs -f app:1.0
+ 9736  minikube logs -f | grep "app:1.0"
+ 9737  minikube logs -f | grep "error"

@@ -1,0 +1,50 @@
+sample_request=[
+{
+    "type": "income",
+    "amount": 10000.0,
+    "description": "Income from salary"
+},
+
+{
+    "type": "income",
+    "amount": 5000.0,
+    "description": "Income from stocks"
+},
+
+{
+    "type": "income",
+    "amount": 5000.0,
+    "description": "Income from property"
+},
+
+{
+    "type": "expense",
+    "amount": 2000.0,
+    "description": "groceries"
+},
+
+{
+    "type": "expense",
+    "amount": 5000.0,
+    "description": "travel"
+},
+
+{
+    "type": "expense",
+    "amount": 2000.0,
+    "description": "bills"
+},
+
+{
+    "type": "expense",
+    "amount": 5000.0,
+    "description": "rent"
+},
+
+{
+    "type": "expense",
+    "amount": 1000.0
+},
+
+
+]

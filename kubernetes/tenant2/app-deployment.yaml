@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --file ../docker-compose.yml convert
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.service: app
+  name: app
+  namespace: tenant2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose --file ../docker-compose.yml convert
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        io.kompose.network/personal-finance-default: "true"
+        io.kompose.service: app
+    spec:
+      containers:
+        - image: app:1.0
+          name: app
+          ports:
+            - containerPort: 5000
+              hostPort: 80
+              protocol: TCP
+      restartPolicy: Always

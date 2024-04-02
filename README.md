@@ -44,8 +44,8 @@
 
 ## Add a new Tenant
 - We have deployment setup for each tenant in `kubernates/<tenant-name>` folder.
-- For adding a new tenant we need create a namespace for the tenant. The sample config file can be found in `kubernates/<tenant-name>/dev-namespace.yaml` file.
-- To apply a namespace we need to run `kubectl apply -f kubernates/<tenant-name>/dev-namespace.yaml -n <tenant-name>`
+- For adding a new tenant we need create a namespace for the tenant. The sample config file can be found in `kubernetes/<tenant-name>/dev-namespace.yaml` file.
+- To apply a namespace we need to run `kubectl apply -f kubernetes/<tenant-name>/dev-namespace.yaml -n <tenant-name>`
 - After creating a namespace, we can add apply all other configurations for that client by `kubectl apply -f kubernetes/<tenant-name>/. -n <tenant-name>`
 - All other configurations has to setup only once while tenant onboarding in kubernates/<tenant-name> folder
 
@@ -54,7 +54,7 @@
 - - Due to lack to production level EKS cluster this functionality is not fully functional.
 - Locally: (Minikube) 
 - - Namespace for the tenant has to be active for deploying app for a tenant.
-- - `kubectl apply -f kubernates/<tenant-name>/. `
+- - `kubectl apply -f kubernetes/<tenant-name>/. `
 - We will wait till all containers are RUNNING by using this command: `kubectl get po,svc -n <tenant-name>`
 - - `minikube service web-service --url` This command will output a specific URL which can be used via postman
 - - Each tenant will have a separate url which can be accessed by their users.

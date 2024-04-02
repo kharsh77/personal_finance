@@ -1,10 +1,11 @@
 # Personal Finance App
 
-Walkthrough Video: https://www.loom.com/share/fd744f0fa86b4c189a0fcec7885bfb2a?sid=c4d374e7-547e-48fe-8d5a-cd2a2383210a
-
 ## Introduction
 - A Python based personl finance app which helps to track income/expense transactions.
 - The app supports multi-tenancy. A client can have isolation on how compute and storage happens on the app.
+
+Walkthrough Video: https://www.loom.com/share/fd744f0fa86b4c189a0fcec7885bfb2a?sid=c4d374e7-547e-48fe-8d5a-cd2a2383210a
+
 
 ## Design Considerations
 - The app uses flask framework to expose few apis and postgres for data storage.

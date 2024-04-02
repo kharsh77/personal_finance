@@ -32,7 +32,7 @@
 - - `eksctl create cluster -f cluster.yaml --kubeconfig=~/.kube/config`        
 - Local (Minikube):
 - - We need to start minikube and allow local docker repositories to be accessed by minikube.
-- - `start minikube`
+- - `minikube start`
 - - `eval $(minikube docker-env)`
 - - `minikube addons enable registry`
 
